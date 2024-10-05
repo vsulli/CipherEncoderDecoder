@@ -24,3 +24,5 @@ it back to a letter.
 Encodes a message by using a different Caesar cipher on each letter, where a key determines how much it increments.
 
 
+TODO
+- make a function to make words lowercase before feeding into encoder

@@ -5,12 +5,20 @@
 * encode a message or decode a message based on that cipher type.
 */
 
+#include <algorithm>
 #include <iostream>
+#include <iterator>
 #include <map>
 #include <string>
 
+#include <complex>
+#include <iomanip>
+#include <vector>
+
+using namespace std;
+
 // Atbash Encoder
-std::string atbashEncoder(std::string message) {
+void atbashEncoder(std::string message) {
     std::map<char, char> letter_map = {
         {'a', 'z'},{'b', 'y'},{'c', 'x'},{'d', 'w'},{'e', 'v'},
         {'f', 'u'},{'g', 't'},{'h', 's'},{'i', 'r'},{'j', 'q'},
@@ -19,10 +27,19 @@ std::string atbashEncoder(std::string message) {
         {'u', 'f'},{'v', 'e'},{'w', 'd'},{'x', 'c'},{'y', 'b'},
         {'z', 'a'},
     };
+    message.erase(std::remove_if(message.begin(), message.end(), ispunct), message.end());
+    // TODO create function to convert message to lowercase
+
+
     std::string encrypted_msg = "";
     // for every index of letter in message, retrieve new letter
     // make message all lower, strip punctuation?
+    for (char& c : message) {
+        char letter = letter_map.at(c);
+        encrypted_msg.append(1, letter);
+    }
 
+    std::cout << encrypted_msg << endl;
 }
 
 // Atbash Decoder
@@ -84,7 +101,7 @@ void menu()
                     std::string message;
                     std::cout << "Input a message to encode." << std::endl;
                     std::cin >> message;
-
+                    atbashEncoder(message);
                 }
                 // decode
                 else if (selection == 7) {
