@@ -6,13 +6,28 @@
 */
 
 #include <iostream>
+#include <map>
 #include <string>
 
-// Atbash Encryption
+// Atbash Encoder
+std::string atbashEncoder(std::string message) {
+    std::map<char, char> letter_map = {
+        {'a', 'z'},{'b', 'y'},{'c', 'x'},{'d', 'w'},{'e', 'v'},
+        {'f', 'u'},{'g', 't'},{'h', 's'},{'i', 'r'},{'j', 'q'},
+        {'k', 'p'},{'l', 'o'},{'m', 'n'},{'n', 'm'},{'o', 'l'},
+        {'p', 'k'},{'q', 'j'},{'r', 'i'},{'s', 'h'},{'t', 'g'},
+        {'u', 'f'},{'v', 'e'},{'w', 'd'},{'x', 'c'},{'y', 'b'},
+        {'z', 'a'},
+    };
+    std::string encrypted_msg = "";
+    // for every index of letter in message, retrieve new letter
+    // make message all lower, strip punctuation?
 
-// Atbash Decryption
+}
 
-int submenu() {
+// Atbash Decoder
+
+int subMenu() {
     int selection2 = 0;
 
     std::cout << "Would you like to encode or decode a message?" << std::endl
@@ -63,7 +78,7 @@ void menu()
 
             case 1:
                 // Atbash - encodes message with the reverse of the alphabet
-                selection = submenu();
+                selection = subMenu();
                 // encode
                 if (selection == 6) {
                     std::string message;
@@ -101,8 +116,6 @@ void menu()
             }
     }
     return;
-   
-
 }
 
 int main()
