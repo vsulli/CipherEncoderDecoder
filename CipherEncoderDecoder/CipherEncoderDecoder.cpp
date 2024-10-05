@@ -6,6 +6,11 @@
 */
 
 #include <iostream>
+#include <string>
+
+// Atbash Encryption
+
+// Atbash Decryption
 
 int submenu() {
     int selection2 = 0;
@@ -20,10 +25,10 @@ int submenu() {
     while (selection2 != -2){
         switch (selection2) {
             case 1:
-                break;
+               return selection2 = 6;
 
             case 2:
-                break;
+                return selection2 = 7;
 
             case 3:
                 selection2 = -2;
@@ -59,6 +64,17 @@ void menu()
             case 1:
                 // Atbash - encodes message with the reverse of the alphabet
                 selection = submenu();
+                // encode
+                if (selection == 6) {
+                    std::string message;
+                    std::cout << "Input a message to encode." << std::endl;
+                    std::cin >> message;
+
+                }
+                // decode
+                else if (selection == 7) {
+
+                }
                 break;
 
             case 2:
