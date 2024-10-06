@@ -35,15 +35,43 @@ void atbashEncoder(std::string message) {
     // for every index of letter in message, retrieve new letter
     // make message all lower, strip punctuation?
     for (char& c : message) {
-        char letter = letter_map.at(c);
-        encrypted_msg.append(1, letter);
+        cout << c << endl;
+        if (isspace(c)) {
+            encrypted_msg += " ";
+        }
+        else {
+            char letter = letter_map.at(c);
+            encrypted_msg.append(1, letter);
+        }
     }
 
     std::cout << encrypted_msg << endl;
 }
 
 // Atbash Decoder
+void atbashDecoder(std::string message) {
+    std::map<char, char> letter_map = {
+        {'z', 'a'},{'y', 'b'},{'x', 'c'},{'w', 'd'},{'v', 'e'},
+        {'u', 'f'},{'t', 'g'},{'s', 'h'},{'r', 'i'},{'q', 'j'},
+        {'p', 'k'},{'o', 'l'},{'n', 'm'},{'m', 'n'},{'l', 'o'},
+        {'k', 'p'},{'j', 'q'},{'i', 'r'},{'h', 's'},{'g', 't'},
+        {'f', 'u'},{'e', 'v'},{'d', 'w'},{'c', 'x'},{'b', 'y'},
+        {'a', 'z'},
+    };
+    message.erase(std::remove_if(message.begin(), message.end(), ispunct), message.end());
+    // TODO create function to convert message to lowercase
 
+
+    std::string decrypted_msg = "";
+    // for every index of letter in message, retrieve new letter
+    // make message all lower, strip punctuation?
+    for (char& c : message) {
+        char letter = letter_map.at(c);
+        decrypted_msg.append(1, letter);
+    }
+
+    std::cout << decrypted_msg << endl;
+}
 int subMenu() {
     int selection2 = 0;
 
@@ -105,7 +133,10 @@ void menu()
                 }
                 // decode
                 else if (selection == 7) {
-
+                    std::string message;
+                    std::cout << "Input a message to decode." << std::endl;
+                    std::cin >> message;
+                    atbashDecoder(message);
                 }
                 break;
 
