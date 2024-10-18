@@ -80,19 +80,31 @@ void caesarEncoder(std::string message) {
     std::cout << "How much is the shift?" << std::endl;
     std::cin >> shift;
 
+    // in case shift extends past 26, mod division
+    shift %= 26;
+
+
+    // return original message 
+    if (shift == 0) {
+        cout << message << endl;
+        return;
+    }
+
+
     std::string encrypted_msg = "";
     for (char& c : message) {
         if (isspace(c)) {
             encrypted_msg += " ";
         }
         else {
-            c += shift;
-            cout << c << endl;
+            int ascii_num = int(c);
+            ascii_num += shift;
             // add to beg if value now overruns ASCII char values
-            if (int(c) > 122){
-                c = c - 122 + 97 - 1;
-                encrypted_msg.append(1, c);
+            if (ascii_num > 122){
+                ascii_num = ascii_num - 122 + 97 - 1;
             }
+            c = char(ascii_num);
+            encrypted_msg.append(1, c);
         }
     }
 

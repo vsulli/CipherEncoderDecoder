@@ -16,8 +16,11 @@ lowercase letters are in the range (a: 97 - z: 122)
 if value extends past 122: value - 122 + 97 - 1
 ex) x shift of 1
 z -> a (122 -> 123)
+first convert letter to ascii, then do shift
 end up with value of 97
 convert back to letter
+
+if shift is > 26, mod by 26
 
 
 ## Affine Cipher
