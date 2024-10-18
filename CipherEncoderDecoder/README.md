@@ -11,6 +11,13 @@ Encodes a message by reversing the alphabet.
 ## Caesar Cipher / Shift Cipher
 
 Encodes a message by replacing each letter with a different letter x units down.
+- using ASCII table can add x to its value
+lowercase letters are in the range (a: 97 - z: 122)
+if value extends past 122: value - 122 + 97 - 1
+ex) x shift of 1
+z -> a (122 -> 123)
+end up with value of 97
+convert back to letter
 
 
 ## Affine Cipher
@@ -26,3 +33,4 @@ Encodes a message by using a different Caesar cipher on each letter, where a key
 
 TODO
 - make a function to make words lowercase before feeding into encoder
+- adapt Caesar cipher to work for shifts > 26

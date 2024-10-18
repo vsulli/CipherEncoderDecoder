@@ -35,7 +35,6 @@ void atbashEncoder(std::string message) {
     // for every index of letter in message, retrieve new letter
     // make message all lower, strip punctuation?
     for (char& c : message) {
-        cout << c << endl;
         if (isspace(c)) {
             encrypted_msg += " ";
         }
@@ -72,6 +71,41 @@ void atbashDecoder(std::string message) {
 
     std::cout << decrypted_msg << endl;
 }
+
+
+// Caesar Encoder
+void caesarEncoder(std::string message) {
+    // using the ASCII values
+    int shift;
+    std::cout << "How much is the shift?" << std::endl;
+    std::cin >> shift;
+
+    std::string encrypted_msg = "";
+    for (char& c : message) {
+        if (isspace(c)) {
+            encrypted_msg += " ";
+        }
+        else {
+            c += shift;
+            cout << c << endl;
+            // add to beg if value now overruns ASCII char values
+            if (int(c) > 122){
+                c = c - 122 + 97 - 1;
+                encrypted_msg.append(1, c);
+            }
+        }
+    }
+
+    std::cout << encrypted_msg << endl;
+
+
+}
+
+// Caesar Decoder
+void caesarDecoder(std::string message) {
+
+}
+
 int subMenu() {
     int selection2 = 0;
 
@@ -141,6 +175,23 @@ void menu()
                 break;
 
             case 2:
+                // Caesar - encodes a message using a shift of x characters
+                selection = subMenu();
+
+                if (selection == 6) {
+                    std::string message;
+                    std::cout << "Input a message to encode." << std::endl;
+                    std::cin >> message;
+                    caesarEncoder(message);
+                }
+                // decode
+                else if (selection == 7) {
+                    std::string message;
+                    std::cout << "Input a message to decode." << std::endl;
+                    std::cin >> message;
+                    caesarDecoder(message);
+                }
+
                 break;
 
             case 3:
