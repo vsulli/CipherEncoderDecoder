@@ -101,7 +101,7 @@ void caesarEncoder(std::string message) {
             ascii_num += shift;
             // add to beg if value now overruns ASCII char values
             if (ascii_num > 122){
-                ascii_num = ascii_num - 122 + 97 - 1;
+                ascii_num = ascii_num % 122 + 97 - 1;
             }
             c = char(ascii_num);
             encrypted_msg.append(1, c);

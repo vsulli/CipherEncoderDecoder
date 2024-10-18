@@ -13,14 +13,17 @@ Encodes a message by reversing the alphabet.
 Encodes a message by replacing each letter with a different letter x units down.
 - using ASCII table can add x to its value
 lowercase letters are in the range (a: 97 - z: 122)
-if value extends past 122: value - 122 + 97 - 1
+if value extends past 122 have to calculate new value of char
+// ascii_num = ascii_num - 122 + 97 - 1;
+// ascii_num = ascii_num % 122 + 97 - 1;
+- 
 ex) x shift of 1
 z -> a (122 -> 123)
 first convert letter to ascii, then do shift
 end up with value of 97
 convert back to letter
 
-if shift is > 26, mod by 26
+- if shift is > 26, mod by 26
 
 
 ## Affine Cipher
