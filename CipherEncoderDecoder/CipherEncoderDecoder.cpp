@@ -107,7 +107,6 @@ void caesarEncoder(std::string message) {
             encrypted_msg.append(1, c);
         }
     }
-
     std::cout << encrypted_msg << endl;
 
 
@@ -115,6 +114,41 @@ void caesarEncoder(std::string message) {
 
 // Caesar Decoder
 void caesarDecoder(std::string message) {
+
+    // using the ASCII values
+    int shift;
+    std::cout << "How much is the shift?" << std::endl;
+    std::cin >> shift;
+
+    // in case shift extends past 26, mod division
+    shift %= 26;
+
+
+    // return original message 
+    if (shift == 0) {
+        cout << message << endl;
+        return;
+    }
+
+    std::string decrypted_msg = "";
+
+    for (char& c : message) {
+        if (isspace(c)) {
+            decrypted_msg += " ";
+        }
+        else {
+            int ascii_num = int(c);
+            ascii_num -= shift;
+            // add to beg if value now overruns ASCII char values
+            if (ascii_num < 97) {
+                ascii_num = 122 - 97 % ascii_num + 1;
+            }
+            c = char(ascii_num);
+            decrypted_msg.append(1, c);
+        }
+    }
+    std::cout << decrypted_msg << endl;
+
 
 }
 
