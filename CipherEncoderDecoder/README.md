@@ -27,9 +27,22 @@ convert back to letter
 
 
 ## Affine Cipher
+https://math.asu.edu/sites/default/files/affine.pdf
 
-Encodes a message by mapping a letter to its numerica equivalent, applying a mathematical function, and then converting
+Encodes a message by mapping a letter to its numerical equivalent, applying a mathematical function, and then converting
 it back to a letter.
+
+Encryption function for a single letter: E(x) = (ax+b) mod m
+
+'key' consists of two values (a & b)
+a - must be prime to m (not have any factors in common with m)
+a - 1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25
+m = 26 (the letters of the alphabet)
+
+My values chosen:
+a - 17
+b - 7
+
 
 
 ## Vigenere Cipher
@@ -39,4 +52,4 @@ Encodes a message by using a different Caesar cipher on each letter, where a key
 
 TODO
 - make a function to make words lowercase before feeding into encoder
-- adapt Caesar cipher to work for shifts > 26
+- fix to work for phrases with spaces
