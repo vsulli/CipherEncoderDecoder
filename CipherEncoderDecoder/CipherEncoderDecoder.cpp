@@ -210,6 +210,7 @@ void affineDecoder(std::string message) {
 
     double a = 17.0;
     double result;
+    int result2;
     double exponent = -1.0;
     int b = 7;
     int m = 26;
@@ -225,7 +226,8 @@ void affineDecoder(std::string message) {
             double power = pow(a, -1.0);
             // TODO: need to convert back to int
             result = pow(a, exponent);
-            result = result * (num - b) % m;
+            result = result * (num - b);
+            result2 = (int)(result) % m;
             num = int(power);
             c = num_map.at(num);
             decrypted_msg.append(1, c);
