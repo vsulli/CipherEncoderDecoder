@@ -43,6 +43,7 @@ My values chosen:
 a - 17
 b - 7
 
+Decryption function: D(x)= a^-1 *(x-b) mod m
 
 
 ## Vigenere Cipher
@@ -53,3 +54,6 @@ Encodes a message by using a different Caesar cipher on each letter, where a key
 TODO
 - make a function to make words lowercase before feeding into encoder
 - fix to work for phrases with spaces
+
+FUTURE CHANGES
+- Affine: allow user to select a (among possible choices) and b

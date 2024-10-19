@@ -10,7 +10,7 @@
 #include <iterator>
 #include <map>
 #include <string>
-
+#include <cmath>
 #include <complex>
 #include <iomanip>
 #include <vector>
@@ -158,15 +158,30 @@ void affineEncoder(std::string message) {
         {'u', 20},{'v', 21},{'w', 22},{'x', 23},{'y', 24},
         {'z', 25},
     };
+
+    std::map<int, char> num_map = {
+         {0, 'a'},{1, 'b'},{2, 'c'},{3, 'd'},{4, 'e'},
+        {5, 'f'},{6, 'g'},{7, 'h'},{8, 'i'},{9, 'j'},
+        {10, 'k'},{11, 'l'},{12, 'm'},{13, 'n'},{14, 'o'},
+        {15, 'p'},{16, 'q'},{17, 'r'},{18, 's'},{19, 't'},
+        {20, 'u'},{21, 'v'},{22, 'w'},{23, 'x'},{24, 'y'},
+        {25, 'z'},
+    };
     // E(x)=(ax+b) mod m
     // using a = 17, b = 7, m = 26
+    int a = 17;
+    int b = 7;
+    int m = 26;
+
     std::string encrypted_msg = "";
     for (char& c : message) {
         if (isspace(c)) {
             encrypted_msg += " ";
         }
         else {
-            
+            int num = letter_map.at(c);
+            num = (a * num + b) % m;
+            c = num_map.at(num);
             encrypted_msg.append(1, c);
         }
     }
@@ -175,7 +190,42 @@ void affineEncoder(std::string message) {
 }
 // Affine Decoder
 void affineDecoder(std::string message) {
+    std::map<char, int> letter_map = {
+       {'a', 0},{'b', 1},{'c', 2},{'d', 3},{'e', 4},
+       {'f', 5},{'g', 6},{'h', 7},{'i', 8},{'j', 9},
+       {'k', 10},{'l', 11},{'m', 12},{'n', 13},{'o', 14},
+       {'p', 15},{'q', 16},{'r', 17},{'s', 18},{'t', 19},
+       {'u', 20},{'v', 21},{'w', 22},{'x', 23},{'y', 24},
+       {'z', 25},
+    };
 
+    std::map<int, char> num_map = {
+         {0, 'a'},{1, 'b'},{2, 'c'},{3, 'd'},{4, 'e'},
+        {5, 'f'},{6, 'g'},{7, 'h'},{8, 'i'},{9, 'j'},
+        {10, 'k'},{11, 'l'},{12, 'm'},{13, 'n'},{14, 'o'},
+        {15, 'p'},{16, 'q'},{17, 'r'},{18, 's'},{19, 't'},
+        {20, 'u'},{21, 'v'},{22, 'w'},{23, 'x'},{24, 'y'},
+        {25, 'z'},
+    };
+
+    int a = 17;
+    int b = 7;
+    int m = 26;
+
+    std::string decrypted_msg = "";
+    for (char& c : message) {
+        if (isspace(c)) {
+            decrypted_msg += " ";
+        }
+        else {
+            // convert c -> num
+            int num = letter_map.at(c);
+            num = (int)pow(a, -1) * (num - b) % m;
+            c = num_map.at(num);
+            decrypted_msg.append(1, c);
+        }
+    }
+    std::cout << decrypted_msg << endl;
 }
 
 
@@ -269,6 +319,23 @@ void menu()
                 break;
 
             case 3:
+
+                // Affine - encodes a message using a mathematical equation
+                selection = subMenu();
+
+                if (selection == 6) {
+                    std::string message;
+                    std::cout << "Input a message to encode." << std::endl;
+                    std::cin >> message;
+                    affineEncoder(message);
+                }
+                // decode
+                else if (selection == 7) {
+                    std::string message;
+                    std::cout << "Input a message to decode." << std::endl;
+                    std::cin >> message;
+                    affineDecoder(message);
+                }
                 break;
 
             case 4:
