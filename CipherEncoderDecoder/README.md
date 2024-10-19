@@ -51,7 +51,14 @@ Decryption function: D(x)= a^-1 *(x-b) mod m
 Encodes a message by using a different Caesar cipher on each letter, where a key determines how much it increments.
 
 
+OTHER NOTES
+
+- casting between types in c++
+https://stackoverflow.com/questions/37497016/best-practice-in-c-for-casting-between-number-types
+
+
 TODO
+- fix decryption function
 - make a function to make words lowercase before feeding into encoder
 - fix to work for phrases with spaces
 

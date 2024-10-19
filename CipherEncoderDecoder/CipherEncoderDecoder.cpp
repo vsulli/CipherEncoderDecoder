@@ -208,7 +208,7 @@ void affineDecoder(std::string message) {
         {25, 'z'},
     };
 
-    int a = 17;
+    double a = 17.0;
     int b = 7;
     int m = 26;
 
@@ -220,7 +220,9 @@ void affineDecoder(std::string message) {
         else {
             // convert c -> num
             int num = letter_map.at(c);
-            num = (int)pow(a, -1) * (num - b) % m;
+            double power = pow(a, -1);
+            // TODO: need to convert back to int
+            num = std::pow(a, -1) * (num - b) % m;
             c = num_map.at(num);
             decrypted_msg.append(1, c);
         }
