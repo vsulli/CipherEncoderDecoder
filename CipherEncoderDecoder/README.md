@@ -56,6 +56,9 @@ OTHER NOTES
 - casting between types in c++
 https://stackoverflow.com/questions/37497016/best-practice-in-c-for-casting-between-number-types
 
+- power of a number in c++
+ https://www.programiz.com/cpp-programming/library-function/cmath/pow
+- 
 
 TODO
 - fix decryption function
