@@ -45,6 +45,9 @@ b - 7
 
 Decryption function: D(x)= a^-1 *(x-b) mod m
 a^-1 modular multiplicative inverse
+https://www.geeksforgeeks.org/multiplicative-inverse-under-modulo-m/#
+// if neg res, make pos
+   result = (result + m) % m;
 
 
 

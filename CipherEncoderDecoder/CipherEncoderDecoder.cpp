@@ -235,7 +235,8 @@ void affineDecoder(std::string message) {
             int num = letter_map.at(c);
             // TODO: need to convert back to int
             result = modInverse(a, m)*(num - b) % m;
-            // num = int(result);
+            // if neg res, make pos
+            result = (result + m) % m;
             c = num_map.at(result);
             decrypted_msg.append(1, c);
         }
