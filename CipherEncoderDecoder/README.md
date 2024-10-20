@@ -61,6 +61,7 @@ https://stackoverflow.com/questions/37497016/best-practice-in-c-for-casting-betw
 - 
 
 TODO
+- difference between implicit & explicit cast, static cast etc.
 - fix decryption function
 - make a function to make words lowercase before feeding into encoder
 - fix to work for phrases with spaces
