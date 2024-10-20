@@ -44,6 +44,9 @@ a - 17
 b - 7
 
 Decryption function: D(x)= a^-1 *(x-b) mod m
+a^-1 modular multiplicative inverse
+
+
 
 
 ## Vigenere Cipher

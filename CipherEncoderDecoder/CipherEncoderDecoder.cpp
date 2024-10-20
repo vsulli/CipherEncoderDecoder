@@ -188,6 +188,17 @@ void affineEncoder(std::string message) {
     std::cout << encrypted_msg << endl;
 
 }
+
+// Modular Multiplicative Inverse
+
+int modInverse(int a, int mod) {
+    
+    for (int x = 1; x < mod; x++) {
+        if (((a % mod) * (x % mod)) % mod == 1) {
+            return x;
+        }
+    }
+}
 // Affine Decoder
 void affineDecoder(std::string message) {
     std::map<char, int> letter_map = {
@@ -209,8 +220,7 @@ void affineDecoder(std::string message) {
     };
 
     double a = 17.0;
-    double result;
-    int result2;
+    int result;
     double exponent = -1.0;
     int b = 7;
     int m = 26;
@@ -223,14 +233,10 @@ void affineDecoder(std::string message) {
         else {
             // convert c -> num
             int num = letter_map.at(c);
-            double power = pow(a, -1.0);
             // TODO: need to convert back to int
-            result = pow(a, exponent);
-            // result = result * (num - b);
-            result2 = result*(num - b);
-            result2 = result2 % m;
-            num = int(result2);
-            c = num_map.at(num);
+            result = modInverse(a, m)*(num - b) % m;
+            // num = int(result);
+            c = num_map.at(result);
             decrypted_msg.append(1, c);
         }
     }
