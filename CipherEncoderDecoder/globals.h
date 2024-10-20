@@ -1,4 +1,4 @@
-// globals
+// globals header
 #include <map>
 
 extern std::map<char, char> letter_map;

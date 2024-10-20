@@ -54,7 +54,6 @@ void atbashDecoder(std::string message) {
     message.erase(std::remove_if(message.begin(), message.end(), ispunct), message.end());
     // TODO create function to convert message to lowercase
 
-
     std::string decrypted_msg = "";
     // for every index of letter in message, retrieve new letter
     // make message all lower, strip punctuation?
@@ -77,13 +76,11 @@ void caesarEncoder(std::string message) {
     // in case shift extends past 26, mod division
     shift %= 26;
 
-
     // return original message 
     if (shift == 0) {
         cout << message << endl;
         return;
     }
-
 
     std::string encrypted_msg = "";
     for (char& c : message) {
@@ -169,7 +166,6 @@ void affineEncoder(std::string message) {
 }
 
 // Modular Multiplicative Inverse
-
 int modInverse(int a, int mod) {
     
     for (int x = 1; x < mod; x++) {
