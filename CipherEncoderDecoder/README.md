@@ -77,6 +77,8 @@ https://stackoverflow.com/questions/37497016/best-practice-in-c-for-casting-betw
 TODO
 - make a function to make words lowercase before feeding into encoder
 - fix to work for phrases with spaces
+- separate out into multiple files
+- cipher class?
 
 FUTURE CHANGES
 - Affine: allow user to select a (among possible choices) and b

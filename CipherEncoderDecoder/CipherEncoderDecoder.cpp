@@ -278,15 +278,15 @@ void viginereEncoder(std::string message, std::string key) {
             num = (letter_map.at(c) + letter_map.at(key.at(k_ptr))) % m;
             c = num_map.at(num);
             encrypted_msg.append(1, c);
-            // increment key pointer, if greater than indices of key, reset
+            // increment key pointer
             k_ptr++;
+            // key pointer now greater than indices of key, reset
             if (k_ptr > key.length() - 1) {
                 k_ptr = 0;
             }
         }
     }
     std::cout << encrypted_msg << endl;
-
 }
 
 /*
@@ -424,7 +424,6 @@ void menu()
                     std::cin >> key;
                     // viginereDecoder(message, key);
                 }
-
                 break;
 
             case 5:
@@ -448,6 +447,4 @@ int main()
 {
     menu();
     return 0;
-
-
 }
