@@ -56,6 +56,14 @@ https://www.geeksforgeeks.org/multiplicative-inverse-under-modulo-m/#
 
 Encodes a message by using a different Caesar cipher on each letter, where a key determines how much it increments.
 
+- choose a key
+- that key is repeated until it is as long as the message to encrypt
+E(x) = (x + k) mod 26
+x = num of letter of message to encode
+k = num of letter of key 
+
+D(c) = (c - k) mod 26
+c = num of letter of message in cipher
 
 OTHER NOTES
 
@@ -67,8 +75,6 @@ https://stackoverflow.com/questions/37497016/best-practice-in-c-for-casting-betw
 - 
 
 TODO
-- difference between implicit & explicit cast, static cast etc.
-- fix decryption function
 - make a function to make words lowercase before feeding into encoder
 - fix to work for phrases with spaces
 

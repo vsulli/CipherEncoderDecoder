@@ -244,7 +244,15 @@ void affineDecoder(std::string message) {
     std::cout << decrypted_msg << endl;
 }
 
+// Vigenere Encoder
+void viginereEncoder(std::string message, std::string key) {
 
+}
+
+// Viginere Decoder
+void viginereDecoder(std::string message, std::string key) {
+
+}
 
 int subMenu() {
     int selection2 = 0;
@@ -331,7 +339,6 @@ void menu()
                     std::cin >> message;
                     caesarDecoder(message);
                 }
-
                 break;
 
             case 3:
@@ -355,6 +362,27 @@ void menu()
                 break;
 
             case 4:
+                // Viginere Cipher
+                if (selection == 6) {
+                    std::string message;
+                    std::string key;
+                    std::cout << "Input a message to encode." << std::endl;
+                    std::cin >> message;
+                    std::cout << "Input a key for the message." << std::endl;
+                    std::cin >> key;
+                    viginereEncoder(message, key);
+                }
+                // decode
+                else if (selection == 7) {
+                    std::string message;
+                    std::string key;
+                    std::cout << "Input a message to decode." << std::endl;
+                    std::cin >> message;
+                    std::cout << "Input the key for the message." << std::endl;
+                    std::cin >> key;
+                    viginereDecoder(message, key);
+                }
+
                 break;
 
             case 5:
