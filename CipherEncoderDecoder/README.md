@@ -75,6 +75,7 @@ https://stackoverflow.com/questions/37497016/best-practice-in-c-for-casting-betw
 - 
 
 TODO
+- fix affine cipher - need to add more character maps to header file since not all of the ciphers were using the same map
 - make a function to make words lowercase before feeding into encoder
 - fix to work for phrases with spaces
 - separate out into multiple files

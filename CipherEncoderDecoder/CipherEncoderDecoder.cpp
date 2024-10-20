@@ -145,6 +145,7 @@ void caesarDecoder(std::string message) {
 // Affine Encoder
 void affineEncoder(std::string message) {
 
+
     // E(x)=(ax+b) mod m
     // using a = 17, b = 7, m = 26
     int a = 17;
@@ -157,7 +158,7 @@ void affineEncoder(std::string message) {
             encrypted_msg += " ";
         }
         else {
-            int num = letter_map.at(c);
+            int num = letter_map2.at(c);
             num = (a * num + b) % m;
             c = num_map.at(num);
             encrypted_msg.append(1, c);
@@ -194,7 +195,7 @@ void affineDecoder(std::string message) {
         }
         else {
             // convert c -> num
-            int num = letter_map.at(c);
+            int num = letter_map2.at(c);
             // TODO: need to convert back to int
             result = modInverse(a, m)*(num - b) % m;
             // if neg res, make pos
