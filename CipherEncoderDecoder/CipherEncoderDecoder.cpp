@@ -246,14 +246,55 @@ void affineDecoder(std::string message) {
 
 // Vigenere Encoder
 void viginereEncoder(std::string message, std::string key) {
+    std::map<char, int> letter_map = {
+       {'a', 0},{'b', 1},{'c', 2},{'d', 3},{'e', 4},
+       {'f', 5},{'g', 6},{'h', 7},{'i', 8},{'j', 9},
+       {'k', 10},{'l', 11},{'m', 12},{'n', 13},{'o', 14},
+       {'p', 15},{'q', 16},{'r', 17},{'s', 18},{'t', 19},
+       {'u', 20},{'v', 21},{'w', 22},{'x', 23},{'y', 24},
+       {'z', 25},
+    };
+
+    std::map<int, char> num_map = {
+         {0, 'a'},{1, 'b'},{2, 'c'},{3, 'd'},{4, 'e'},
+        {5, 'f'},{6, 'g'},{7, 'h'},{8, 'i'},{9, 'j'},
+        {10, 'k'},{11, 'l'},{12, 'm'},{13, 'n'},{14, 'o'},
+        {15, 'p'},{16, 'q'},{17, 'r'},{18, 's'},{19, 't'},
+        {20, 'u'},{21, 'v'},{22, 'w'},{23, 'x'},{24, 'y'},
+        {25, 'z'},
+    };
+    std::string encrypted_msg = "";
+    int num;
+    int k_ptr = 0;
+    int m = 26;
+
+    for (char& c : message) {
+        if (isspace(c)) {
+            encrypted_msg += " ";
+        }
+        else {
+            num = letter_map.at(c);
+            // E(x) = (x + k) mod 26
+            num = (letter_map.at(c) + letter_map.at(key.at(k_ptr))) % m;
+            c = num_map.at(num);
+            encrypted_msg.append(1, c);
+            // increment key pointer, if greater than indices of key, reset
+            k_ptr++;
+            if (k_ptr > key.length() - 1) {
+                k_ptr = 0;
+            }
+        }
+    }
+    std::cout << encrypted_msg << endl;
 
 }
 
+/*
 // Viginere Decoder
 void viginereDecoder(std::string message, std::string key) {
 
 }
-
+*/
 int subMenu() {
     int selection2 = 0;
 
@@ -362,6 +403,7 @@ void menu()
                 break;
 
             case 4:
+                selection = subMenu();
                 // Viginere Cipher
                 if (selection == 6) {
                     std::string message;
@@ -380,7 +422,7 @@ void menu()
                     std::cin >> message;
                     std::cout << "Input the key for the message." << std::endl;
                     std::cin >> key;
-                    viginereDecoder(message, key);
+                    // viginereDecoder(message, key);
                 }
 
                 break;
