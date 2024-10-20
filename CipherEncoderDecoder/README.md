@@ -62,8 +62,8 @@ E(x) = (x + k) mod 26
 x = num of letter of message to encode
 k = num of letter of key 
 
-D(c) = (c - k) mod 26
-c = num of letter of message in cipher
+D(x) = (x - k) mod 26
+x = num of letter of message in cipher
 
 OTHER NOTES
 

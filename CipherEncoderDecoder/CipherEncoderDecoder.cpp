@@ -1,7 +1,7 @@
 /* CipherEncoderDecoder.cpp
 * vsulli
 * 5 October 2024
-* Program that allows the user to determine the type of cipher
+* Program that allows the user to determine the type of cipher,
 * encode a message or decode a message based on that cipher type.
 */
 
@@ -17,6 +17,13 @@
 
 using namespace std;
 
+string getMessage(string func) {
+    std::string message;
+    std::cout << "Input a message to " << func << "." << std::endl;
+    std::cin >> message;
+    return message;
+}
+
 // Atbash Encoder
 void atbashEncoder(std::string message) {
     std::map<char, char> letter_map = {
@@ -27,6 +34,7 @@ void atbashEncoder(std::string message) {
         {'u', 'f'},{'v', 'e'},{'w', 'd'},{'x', 'c'},{'y', 'b'},
         {'z', 'a'},
     };
+
     message.erase(std::remove_if(message.begin(), message.end(), ispunct), message.end());
     // TODO create function to convert message to lowercase
 
@@ -167,6 +175,7 @@ void affineEncoder(std::string message) {
         {20, 'u'},{21, 'v'},{22, 'w'},{23, 'x'},{24, 'y'},
         {25, 'z'},
     };
+
     // E(x)=(ax+b) mod m
     // using a = 17, b = 7, m = 26
     int a = 17;
@@ -199,6 +208,7 @@ int modInverse(int a, int mod) {
         }
     }
 }
+
 // Affine Decoder
 void affineDecoder(std::string message) {
     std::map<char, int> letter_map = {
@@ -245,7 +255,12 @@ void affineDecoder(std::string message) {
 }
 
 // Vigenere Encoder
-void viginereEncoder(std::string message, std::string key) {
+void viginereEncoder(std::string message) {
+
+    string key;
+    std::cout << "Input a key for the message." << std::endl;
+    std::cin >> key;
+
     std::map<char, int> letter_map = {
        {'a', 0},{'b', 1},{'c', 2},{'d', 3},{'e', 4},
        {'f', 5},{'g', 6},{'h', 7},{'i', 8},{'j', 9},
@@ -263,6 +278,7 @@ void viginereEncoder(std::string message, std::string key) {
         {20, 'u'},{21, 'v'},{22, 'w'},{23, 'x'},{24, 'y'},
         {25, 'z'},
     };
+
     std::string encrypted_msg = "";
     int num;
     int k_ptr = 0;
@@ -290,7 +306,13 @@ void viginereEncoder(std::string message, std::string key) {
 }
 
 // Viginere Decoder
-void viginereDecoder(std::string message, std::string key) {
+void viginereDecoder(std::string message) {
+
+    string key;
+    std::cout << "Input the key for the message." << std::endl;
+    std::cin >> key;
+
+
     std::map<char, int> letter_map = {
        {'a', 0},{'b', 1},{'c', 2},{'d', 3},{'e', 4},
        {'f', 5},{'g', 6},{'h', 7},{'i', 8},{'j', 9},
@@ -308,6 +330,7 @@ void viginereDecoder(std::string message, std::string key) {
         {20, 'u'},{21, 'v'},{22, 'w'},{23, 'x'},{24, 'y'},
         {25, 'z'},
     };
+
     std::string decrypted_msg = "";
     int num;
     int k_ptr = 0;
@@ -319,7 +342,7 @@ void viginereDecoder(std::string message, std::string key) {
         }
         else {
             num = letter_map.at(c);
-            // D(c) = (c - k) mod 26
+            // D(x) = (x - k) mod 26
             num = (letter_map.at(c) - letter_map.at(key.at(k_ptr))) % m;
             // if neg num, make pos
             num = (num + m) % m;
@@ -390,17 +413,11 @@ void menu()
                 selection = subMenu();
                 // encode
                 if (selection == 6) {
-                    std::string message;
-                    std::cout << "Input a message to encode." << std::endl;
-                    std::cin >> message;
-                    atbashEncoder(message);
+                    atbashEncoder(getMessage("encode"));
                 }
                 // decode
                 else if (selection == 7) {
-                    std::string message;
-                    std::cout << "Input a message to decode." << std::endl;
-                    std::cin >> message;
-                    atbashDecoder(message);
+                    atbashDecoder(getMessage("decode"));
                 }
                 break;
 
@@ -409,17 +426,11 @@ void menu()
                 selection = subMenu();
 
                 if (selection == 6) {
-                    std::string message;
-                    std::cout << "Input a message to encode." << std::endl;
-                    std::cin >> message;
-                    caesarEncoder(message);
+                    caesarEncoder(getMessage("encode"));
                 }
                 // decode
                 else if (selection == 7) {
-                    std::string message;
-                    std::cout << "Input a message to decode." << std::endl;
-                    std::cin >> message;
-                    caesarDecoder(message);
+                    caesarDecoder(getMessage("decode"));
                 }
                 break;
 
@@ -429,17 +440,11 @@ void menu()
                 selection = subMenu();
 
                 if (selection == 6) {
-                    std::string message;
-                    std::cout << "Input a message to encode." << std::endl;
-                    std::cin >> message;
-                    affineEncoder(message);
+                    affineEncoder(getMessage("encode"));
                 }
                 // decode
                 else if (selection == 7) {
-                    std::string message;
-                    std::cout << "Input a message to decode." << std::endl;
-                    std::cin >> message;
-                    affineDecoder(message);
+                    affineDecoder(getMessage("decode"));
                 }
                 break;
 
@@ -447,23 +452,11 @@ void menu()
                 selection = subMenu();
                 // Viginere Cipher
                 if (selection == 6) {
-                    std::string message;
-                    std::string key;
-                    std::cout << "Input a message to encode." << std::endl;
-                    std::cin >> message;
-                    std::cout << "Input a key for the message." << std::endl;
-                    std::cin >> key;
-                    viginereEncoder(message, key);
+                    viginereEncoder(getMessage("encode"));
                 }
                 // decode
                 else if (selection == 7) {
-                    std::string message;
-                    std::string key;
-                    std::cout << "Input a message to decode." << std::endl;
-                    std::cin >> message;
-                    std::cout << "Input the key for the message." << std::endl;
-                    std::cin >> key;
-                    viginereDecoder(message, key);
+                    viginereDecoder(getMessage("decode"));
                 }
                 break;
 
