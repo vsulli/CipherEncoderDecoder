@@ -58,7 +58,7 @@ void atbashDecoder(string message) {
 
 // Caesar Encoder
 void caesarEncoder(string message) {
-    // using the ASCII values
+   
     int shift;
     cout << "How much is the shift?" << endl;
     cin >> shift;
@@ -78,6 +78,7 @@ void caesarEncoder(string message) {
             encrypted_msg += " ";
         }
         else {
+            // using the ASCII values
             int ascii_num = int(c);
             ascii_num += shift;
             // add to beg if value now overruns ASCII char values
