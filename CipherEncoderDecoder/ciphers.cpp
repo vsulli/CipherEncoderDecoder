@@ -271,7 +271,9 @@ int subMenu() {
     cin >> selection2;
 
     while (selection2 != -2) {
+
         switch (selection2) {
+
         case 1:
             return selection2 = 6;
 
@@ -307,15 +309,18 @@ void menu()
     cin >> selection;
 
     while (selection != -1) {
+
         switch (selection) {
 
         case 1:
             // Atbash - encodes message with the reverse of the alphabet
             selection = subMenu();
+            
             // encode
             if (selection == 6) {
                 atbashEncoder(getMessage("encode"));
             }
+
             // decode
             else if (selection == 7) {
                 atbashDecoder(getMessage("decode"));
@@ -326,6 +331,7 @@ void menu()
             // Caesar - encodes a message using a shift of x characters
             selection = subMenu();
 
+            // encode
             if (selection == 6) {
                 caesarEncoder(getMessage("encode"));
             }
@@ -336,13 +342,14 @@ void menu()
             break;
 
         case 3:
-
             // Affine - encodes a message using a mathematical equation
             selection = subMenu();
 
+            // encode
             if (selection == 6) {
                 affineEncoder(getMessage("encode"));
             }
+
             // decode
             else if (selection == 7) {
                 affineDecoder(getMessage("decode"));
@@ -350,8 +357,10 @@ void menu()
             break;
 
         case 4:
+            // Viginere Cipher - encodes a message using a different caesar on each letter
             selection = subMenu();
-            // Viginere Cipher
+
+            // encode
             if (selection == 6) {
                 viginereEncoder(getMessage("encode"));
             }
