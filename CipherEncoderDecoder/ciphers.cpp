@@ -209,9 +209,9 @@ void viginereEncoder(string message) {
             encrypted_msg += " ";
         }
         else {
-            num = letter_map.at(c);
+            num = letter_map2.at(c);
             // E(x) = (x + k) mod 26
-            num = (letter_map.at(c) + letter_map.at(key.at(k_ptr))) % m;
+            num = (letter_map2.at(c) + letter_map2.at(key.at(k_ptr))) % m;
             c = num_map.at(num);
             encrypted_msg.append(1, c);
             // increment key pointer
@@ -242,9 +242,9 @@ void viginereDecoder(string message) {
             decrypted_msg += " ";
         }
         else {
-            num = letter_map.at(c);
+            num = letter_map2.at(c);
             // D(x) = (x - k) mod 26
-            num = (letter_map.at(c) - letter_map.at(key.at(k_ptr))) % m;
+            num = (letter_map2.at(c) - letter_map2.at(key.at(k_ptr))) % m;
             // if neg num, make pos
             num = (num + m) % m;
             c = num_map.at(num);
