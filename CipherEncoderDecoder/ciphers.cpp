@@ -55,7 +55,6 @@ void atbashDecoder(string message) {
     cout << decrypted_msg << endl;
 }
 
-
 // Caesar Encoder
 void caesarEncoder(string message) {
    
