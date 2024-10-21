@@ -72,10 +72,15 @@ https://stackoverflow.com/questions/37497016/best-practice-in-c-for-casting-betw
 
 - power of a number in c++
  https://www.programiz.com/cpp-programming/library-function/cmath/pow
-- 
+
+- have to include # <algorithm> in order to use std::transform 
+https://en.cppreference.com/w/cpp/algorithm/transform
 
 TODO
 - make a function to make words lowercase before feeding into encoder
+	- boost library or std::transform?
+	- https://en.cppreference.com/w/cpp/algorithm/transform
+- 
 - fix to work for phrases with spaces
 
 FUTURE CHANGES

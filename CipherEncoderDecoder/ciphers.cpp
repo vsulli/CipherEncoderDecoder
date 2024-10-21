@@ -3,8 +3,10 @@
 #include "ciphers.h"
 #include "globals.h"
 
+#include <algorithm>
 #include <iostream>
 #include <string>
+
 
 using namespace std;
 
@@ -16,11 +18,21 @@ string getMessage(string func) {
     return message;
 }
 
+// TODO: function to convert message to lowercase and remove punctuation
+string formatMessage(string message) {
+    // gets rid of punctuation at beginning or end of word
+    message.erase(remove_if(message.begin(), message.end(), ispunct), message.end());
+    
+    // converts all letters to lowercase
+    std::transform(message.begin(), message.end(), message.begin(),
+        [](unsigned char c) { return std::tolower(c); });
+    return message;
+}
+
 // Atbash Encoder
 void atbashEncoder(string message) {
 
-    message.erase(remove_if(message.begin(), message.end(), ispunct), message.end());
-    // TODO create function to convert message to lowercase
+    message = formatMessage(message);
 
     string encrypted_msg = "";
     // for every index of letter in message, retrieve new letter
@@ -41,8 +53,7 @@ void atbashEncoder(string message) {
 // Atbash Decoder
 void atbashDecoder(string message) {
 
-    message.erase(remove_if(message.begin(), message.end(), ispunct), message.end());
-    // TODO create function to convert message to lowercase
+    message = formatMessage(message);
 
     string decrypted_msg = "";
     // for every index of letter in message, retrieve new letter
@@ -57,7 +68,9 @@ void atbashDecoder(string message) {
 
 // Caesar Encoder
 void caesarEncoder(string message) {
-   
+
+    message = formatMessage(message);
+
     int shift;
     cout << "How much is the shift?" << endl;
     cin >> shift;
@@ -93,6 +106,8 @@ void caesarEncoder(string message) {
 
 // Caesar Decoder
 void caesarDecoder(string message) {
+
+    message = formatMessage(message);
 
     // using the ASCII values
     int shift;
@@ -132,6 +147,8 @@ void caesarDecoder(string message) {
 // Affine Encoder
 void affineEncoder(string message) {
 
+    message = formatMessage(message);
+
     // E(x)=(ax+b) mod m
     // using a = 17, b = 7, m = 26
     int a = 17;
@@ -167,6 +184,8 @@ int modInverse(int a, int mod) {
 // Affine Decoder
 void affineDecoder(string message) {
 
+    message = formatMessage(message);
+
     double a = 17.0;
     int result;
     double exponent = -1.0;
@@ -194,6 +213,8 @@ void affineDecoder(string message) {
 
 // Vigenere Encoder
 void viginereEncoder(string message) {
+
+    message = formatMessage(message);
 
     string key;
     cout << "Input a key for the message." << endl;
@@ -227,6 +248,8 @@ void viginereEncoder(string message) {
 
 // Viginere Decoder
 void viginereDecoder(string message) {
+
+    message = formatMessage(message);
 
     string key;
     cout << "Input the key for the message." << endl;
