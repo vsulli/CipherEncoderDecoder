@@ -1,4 +1,5 @@
 // globals file
+
 #include <map>
 
 std::map<char, char> letter_map = {
