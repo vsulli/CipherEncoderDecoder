@@ -18,7 +18,6 @@ string getMessage(string func) {
     return message;
 }
 
-// TODO: function to convert message to lowercase and remove punctuation
 string formatMessage(string message) {
     // gets rid of punctuation at beginning or end of word
     message.erase(remove_if(message.begin(), message.end(), ispunct), message.end());
@@ -36,7 +35,6 @@ void atbashEncoder(string message) {
 
     string encrypted_msg = "";
     // for every index of letter in message, retrieve new letter
-    // make message all lower, strip punctuation?
     for (char& c : message) {
         if (isspace(c)) {
             encrypted_msg += " ";
@@ -56,8 +54,6 @@ void atbashDecoder(string message) {
     message = formatMessage(message);
 
     string decrypted_msg = "";
-    // for every index of letter in message, retrieve new letter
-    // make message all lower, strip punctuation?
     for (char& c : message) {
         char letter = letter_map.at(c);
         decrypted_msg.append(1, letter);
@@ -109,16 +105,11 @@ void caesarDecoder(string message) {
 
     message = formatMessage(message);
 
-    // using the ASCII values
     int shift;
     cout << "How much is the shift?" << endl;
     cin >> shift;
-
-    // in case shift extends past 26, mod division
     shift %= 26;
 
-
-    // return original message 
     if (shift == 0) {
         cout << message << endl;
         return;
@@ -133,10 +124,11 @@ void caesarDecoder(string message) {
         else {
             int ascii_num = int(c);
             ascii_num -= shift;
-            // add to beg if value now overruns ASCII char values
+
             if (ascii_num < 97) {
                 ascii_num = 122 - 97 % ascii_num + 1;
             }
+
             c = char(ascii_num);
             decrypted_msg.append(1, c);
         }
@@ -200,7 +192,6 @@ void affineDecoder(string message) {
         else {
             // convert c -> num
             int num = letter_map2.at(c);
-            // TODO: need to convert back to int
             result = modInverse(a, m) * (num - b) % m;
             // if neg res, make pos
             result = (result + m) % m;
@@ -237,7 +228,7 @@ void viginereEncoder(string message) {
             encrypted_msg.append(1, c);
             // increment key pointer
             k_ptr++;
-            // key pointer now greater than indices of key, reset
+            // if key pointer > indices of key, reset
             if (k_ptr > key.length() - 1) {
                 k_ptr = 0;
             }
@@ -268,13 +259,11 @@ void viginereDecoder(string message) {
             num = letter_map2.at(c);
             // D(x) = (x - k) mod 26
             num = (letter_map2.at(c) - letter_map2.at(key.at(k_ptr))) % m;
-            // if neg num, make pos
             num = (num + m) % m;
             c = num_map.at(num);
             decrypted_msg.append(1, c);
-            // increment key pointer
             k_ptr++;
-            // key pointer now greater than indices of key, reset
+         
             if (k_ptr > key.length() - 1) {
                 k_ptr = 0;
             }
@@ -354,11 +343,11 @@ void menu()
             // Caesar - encodes a message using a shift of x characters
             selection = subMenu();
 
-            // encode
+            
             if (selection == 6) {
                 caesarEncoder(getMessage("encode"));
             }
-            // decode
+            
             else if (selection == 7) {
                 caesarDecoder(getMessage("decode"));
             }
@@ -368,12 +357,12 @@ void menu()
             // Affine - encodes a message using a mathematical equation
             selection = subMenu();
 
-            // encode
+            
             if (selection == 6) {
                 affineEncoder(getMessage("encode"));
             }
 
-            // decode
+            
             else if (selection == 7) {
                 affineDecoder(getMessage("decode"));
             }
@@ -383,11 +372,11 @@ void menu()
             // Viginere Cipher - encodes a message using a different caesar on each letter
             selection = subMenu();
 
-            // encode
+            
             if (selection == 6) {
                 viginereEncoder(getMessage("encode"));
             }
-            // decode
+            
             else if (selection == 7) {
                 viginereDecoder(getMessage("decode"));
             }

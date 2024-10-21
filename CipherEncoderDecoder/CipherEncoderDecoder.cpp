@@ -1,8 +1,9 @@
 /* CipherEncoderDecoder.cpp
 * vsulli
 * 5 October 2024
-* Program that allows the user to determine the type of cipher,
-* encode a message or decode a message based on that cipher type.
+* Program that allows the user to select 
+from 4 cipher types and encode/decode a 
+message based on that cipher type.
 */
 
 #include "ciphers.h"

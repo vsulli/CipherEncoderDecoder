@@ -49,9 +49,6 @@ https://www.geeksforgeeks.org/multiplicative-inverse-under-modulo-m/#
 // if neg res, make pos
    result = (result + m) % m;
 
-
-
-
 ## Vigenere Cipher
 
 Encodes a message by using a different Caesar cipher on each letter, where a key determines how much it increments.
@@ -77,11 +74,10 @@ https://stackoverflow.com/questions/37497016/best-practice-in-c-for-casting-betw
 https://en.cppreference.com/w/cpp/algorithm/transform
 
 TODO
-- make a function to make words lowercase before feeding into encoder
-	- boost library or std::transform?
-	- https://en.cppreference.com/w/cpp/algorithm/transform
-- 
 - fix to work for phrases with spaces
+- error handling for incorrect inputs - nums, etc
+- ensure formatting matches c++ guidelines
+- reformat README
 
 FUTURE CHANGES
 - Affine: allow user to select a (among possible choices) and b
