@@ -5,6 +5,7 @@
 * encode a message or decode a message based on that cipher type.
 */
 
+
 #include "globals.h"
 
 #include <algorithm>
