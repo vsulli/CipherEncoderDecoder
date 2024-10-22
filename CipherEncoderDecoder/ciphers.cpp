@@ -12,8 +12,10 @@ using namespace std;
 
 
 string getMessage(string func) {
-    cout << "Input a message to " << func << ": ";
+    cout << "Input a message to " << func << ":";
     string message;
+    // flush input buffer
+    cin.ignore();
     getline(cin, message);
     return message;
 }

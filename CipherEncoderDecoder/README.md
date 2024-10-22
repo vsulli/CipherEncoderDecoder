@@ -74,7 +74,11 @@ https://stackoverflow.com/questions/37497016/best-practice-in-c-for-casting-betw
 https://en.cppreference.com/w/cpp/algorithm/transform
 
 - in c++ have to use getline(cin, variable_name) to get full string with spaces
-
+- getline won't function correctly unless input buffer is cleared before calling getline
+	- cin.ignore(); 
+	or
+		- cin.clear();
+        - cin.sync();
 TODO
 - fix to work for phrases with spaces
 - error handling for incorrect inputs - nums, etc
