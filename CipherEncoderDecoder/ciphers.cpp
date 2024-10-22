@@ -12,9 +12,9 @@ using namespace std;
 
 
 string getMessage(string func) {
+    cout << "Input a message to " << func << ": ";
     string message;
-    cout << "Input a message to " << func << "." << endl;
-    cin >> message;
+    getline(cin, message);
     return message;
 }
 
@@ -37,7 +37,7 @@ void atbashEncoder(string message) {
     // for every index of letter in message, retrieve new letter
     for (char& c : message) {
         if (isspace(c)) {
-            encrypted_msg += " ";
+            encrypted_msg = encrypted_msg + " ";
         }
         else {
             char letter = letter_map.at(c);

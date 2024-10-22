@@ -73,6 +73,8 @@ https://stackoverflow.com/questions/37497016/best-practice-in-c-for-casting-betw
 - have to include # <algorithm> in order to use std::transform 
 https://en.cppreference.com/w/cpp/algorithm/transform
 
+- in c++ have to use getline(cin, variable_name) to get full string with spaces
+
 TODO
 - fix to work for phrases with spaces
 - error handling for incorrect inputs - nums, etc
