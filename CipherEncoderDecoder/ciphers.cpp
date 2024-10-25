@@ -333,7 +333,13 @@ void menu()
     
     cin >> selection;
     // error handling if selection isn't a digit
+    while (cin.fail()) {
+        cout << "Invalid input. Input an integer." << endl;
+        cin.clear();
+        cin.ignore(256, '\n');
+        cin >> selection;
 
+    }
     while (selection != -1) {
 
         switch (selection) {
@@ -409,7 +415,13 @@ void menu()
                 << "5) Exit" << endl;
            
             cin >> selection;
-            
+            while (cin.fail()) {
+                cout << "Invalid input. Input an integer." << endl;
+                cin.clear();
+                cin.ignore(256, '\n');
+                cin >> selection;
+
+            }
         }
     }
     return;

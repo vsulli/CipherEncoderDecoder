@@ -79,8 +79,11 @@ https://en.cppreference.com/w/cpp/algorithm/transform
 	or
 		- cin.clear();
         - cin.sync();
+
+cin.ignore(256, '\n');
+- ignores up to 256 characters before newline delimiter
+
 TODO
-- error handling for incorrect inputs - nums, etc
 - ensure formatting matches c++ guidelines
 - reformat README
 
