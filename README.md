@@ -62,6 +62,10 @@ k = num of letter of key
 D(x) = (x - k) mod 26
 x = num of letter of message in cipher
 
+FUTURE CHANGES
+- Affine: allow user to select a (among possible choices) and b
+
+
 OTHER NOTES
 
 - casting between types in c++
@@ -85,6 +89,3 @@ cin.ignore(256, '\n');
 
 TODO
 - reformat README
-
-FUTURE CHANGES
-- Affine: allow user to select a (among possible choices) and b
