@@ -21,6 +21,7 @@ lowercase letters are in the range (a: 97 - z: 122)
 if a value goes below 97 or extends past 122 you have to calculate the new value of the char
 
 asciiNum = 122 - 97 % asciiNum + 1;
+
 asciiNum = asciiNum % 122 + 97 - 1;
 
 
@@ -36,9 +37,9 @@ it back to a letter.
 E(x) = (ax+b) mod m
 
 'key' consists of two values (a & b)
-a - must be prime to m (not have any factors in common with m)
-a - 1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25
-m = 26 (the letters of the English alphabet)
+- a - must be prime to m (not have any factors in common with m)
+- a - 1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25
+- m = 26 (the letters of the English alphabet)
 
 My values chosen:
 a = 17
@@ -47,12 +48,14 @@ b = 7
 **Decryption function**
 
 D(x)= a^-1 *(x-b) mod m
+
 a^-1 is the modular multiplicative inverse
 
 [Modular multiplicative inverse](https://www.geeksforgeeks.org/multiplicative-inverse-under-modulo-m/#)
 
-// if neg res, make pos
-   result = (result + m) % m;
+if neg res, make pos
+
+   - result = (result + m) % m;
 
 ## Vigenere Cipher
 
@@ -64,13 +67,13 @@ Encodes a message by using a different Caesar cipher on each letter, where a key
 **Encryption Function**
 
 E(x) = (x + k) mod 26
-x = num of letter of message to encode from map
-k = num of letter of key 
+- x = num of letter of message to encode from map
+- k = num of letter of key 
 
 **Decryption Function**
 
 D(x) = (x - k) mod 26
-x = num of letter of message in cipher to decode from map
+- x = num of letter of message in cipher to decode from map
 
 ## FUTURE CHANGES
 
@@ -85,7 +88,7 @@ x = num of letter of message in cipher to decode from map
 
 [Algorithms library](https://en.cppreference.com/w/cpp/algorithm)
 
-- - have to include # <algorithm> in order to use std::transform 
+- have to include # <algorithm> in order to use std::transform 
 
 [Transform function](https://en.cppreference.com/w/cpp/algorithm/transform)
 
@@ -97,7 +100,8 @@ x = num of letter of message in cipher to decode from map
     - cin.sync();
 	
 	or
-		- cin.ignore(); 
+ 
+	- cin.ignore(); 
 
 cin.ignore(256, '\n');
 
