@@ -57,8 +57,13 @@ void atbashDecoder(string message) {
 
     string decrypted_msg = "";
     for (char& c : message) {
-        char letter = letter_map.at(c);
-        decrypted_msg.append(1, letter);
+        if (isspace(c)) {
+            decrypted_msg = decrypted_msg + " ";
+        }
+        else {
+            char letter = letter_map.at(c);
+            decrypted_msg.append(1, letter);
+        }
     }
 
     cout << decrypted_msg << endl;

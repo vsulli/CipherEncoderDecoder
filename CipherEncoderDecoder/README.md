@@ -80,7 +80,7 @@ https://en.cppreference.com/w/cpp/algorithm/transform
 		- cin.clear();
         - cin.sync();
 TODO
-- fix to work for phrases with spaces
+- fix to work for phrases with spaces - decode needs to handle space char
 - error handling for incorrect inputs - nums, etc
 - ensure formatting matches c++ guidelines
 - reformat README
