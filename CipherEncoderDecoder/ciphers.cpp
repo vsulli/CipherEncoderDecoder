@@ -330,7 +330,9 @@ void menu()
         << "3) Affine Cipher" << endl
         << "4) Vigenere Cipher" << endl
         << "5) Exit" << endl;
+    
     cin >> selection;
+    // error handling if selection isn't a digit
 
     while (selection != -1) {
 
@@ -405,7 +407,9 @@ void menu()
                 << "3) Affine Cipher" << endl
                 << "4) Vigenere Cipher" << endl
                 << "5) Exit" << endl;
+           
             cin >> selection;
+            
         }
     }
     return;
