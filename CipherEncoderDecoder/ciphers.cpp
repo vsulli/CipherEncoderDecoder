@@ -1,13 +1,12 @@
 // ciphers file
 
-#include "ciphers.h"
-#include "globals.h"
-
 #include <algorithm>
 #include <iostream>
 #include <sstream>
 #include <string>
 
+#include "ciphers.h"
+#include "globals.h"
 
 using namespace std;
 
@@ -40,19 +39,19 @@ void atbashEncoder(string message) {
 
     message = formatMessage(message);
 
-    string encrypted_msg = "";
+    string encryptedMsg = "";
     // for every index of letter in message, retrieve new letter
     for (char& c : message) {
         if (isspace(c)) {
-            encrypted_msg = encrypted_msg + " ";
+            encryptedMsg = encryptedMsg + " ";
         }
         else {
-            char letter = letter_map.at(c);
-            encrypted_msg.append(1, letter);
+            char letter = letterMap.at(c);
+            encryptedMsg.append(1, letter);
         }
     }
 
-    cout << encrypted_msg << endl;
+    cout << encryptedMsg << endl;
 }
 
 // Atbash Decoder
@@ -60,18 +59,18 @@ void atbashDecoder(string message) {
 
     message = formatMessage(message);
 
-    string decrypted_msg = "";
+    string decryptedMsg = "";
     for (char& c : message) {
         if (isspace(c)) {
-            decrypted_msg = decrypted_msg + " ";
+            decryptedMsg = decryptedMsg + " ";
         }
         else {
-            char letter = letter_map.at(c);
-            decrypted_msg.append(1, letter);
+            char letter = letterMap.at(c);
+            decryptedMsg.append(1, letter);
         }
     }
 
-    cout << decrypted_msg << endl;
+    cout << decryptedMsg << endl;
 }
 
 // Caesar Encoder
@@ -92,24 +91,24 @@ void caesarEncoder(string message) {
         return;
     }
 
-    string encrypted_msg = "";
+    string encryptedMsg = "";
     for (char& c : message) {
         if (isspace(c)) {
-            encrypted_msg += " ";
+            encryptedMsg += " ";
         }
         else {
             // using the ASCII values
-            int ascii_num = int(c);
-            ascii_num += shift;
+            int asciiNum = int(c);
+            asciiNum += shift;
             // add to beg if value now overruns ASCII char values
-            if (ascii_num > 122) {
-                ascii_num = ascii_num % 122 + 97 - 1;
+            if (asciiNum > 122) {
+                asciiNum = asciiNum % 122 + 97 - 1;
             }
-            c = char(ascii_num);
-            encrypted_msg.append(1, c);
+            c = char(asciiNum);
+            encryptedMsg.append(1, c);
         }
     }
-    cout << encrypted_msg << endl;
+    cout << encryptedMsg << endl;
 }
 
 // Caesar Decoder
@@ -127,25 +126,25 @@ void caesarDecoder(string message) {
         return;
     }
 
-    string decrypted_msg = "";
+    string decryptedMsg = "";
 
     for (char& c : message) {
         if (isspace(c)) {
-            decrypted_msg += " ";
+            decryptedMsg += " ";
         }
         else {
-            int ascii_num = int(c);
-            ascii_num -= shift;
+            int asciiNum = int(c);
+            asciiNum -= shift;
 
-            if (ascii_num < 97) {
-                ascii_num = 122 - 97 % ascii_num + 1;
+            if (asciiNum < 97) {
+                asciiNum = 122 - 97 % asciiNum + 1;
             }
 
-            c = char(ascii_num);
-            decrypted_msg.append(1, c);
+            c = char(asciiNum);
+            decryptedMsg.append(1, c);
         }
     }
-    cout << decrypted_msg << endl;
+    cout << decryptedMsg << endl;
 }
 
 // Affine Encoder
@@ -159,19 +158,19 @@ void affineEncoder(string message) {
     int b = 7;
     int m = 26;
 
-    string encrypted_msg = "";
+    string encryptedMsg = "";
     for (char& c : message) {
         if (isspace(c)) {
-            encrypted_msg += " ";
+            encryptedMsg += " ";
         }
         else {
-            int num = letter_map2.at(c);
+            int num = letterMap2.at(c);
             num = (a * num + b) % m;
-            c = num_map.at(num);
-            encrypted_msg.append(1, c);
+            c = numMap.at(num);
+            encryptedMsg.append(1, c);
         }
     }
-    cout << encrypted_msg << endl;
+    cout << encryptedMsg << endl;
 
 }
 
@@ -196,22 +195,22 @@ void affineDecoder(string message) {
     int b = 7;
     int m = 26;
 
-    string decrypted_msg = "";
+    string decryptedMsg = "";
     for (char& c : message) {
         if (isspace(c)) {
-            decrypted_msg += " ";
+            decryptedMsg += " ";
         }
         else {
             // convert c -> num
-            int num = letter_map2.at(c);
+            int num = letterMap2.at(c);
             result = modInverse(a, m) * (num - b) % m;
             // if neg res, make pos
             result = (result + m) % m;
-            c = num_map.at(result);
-            decrypted_msg.append(1, c);
+            c = numMap.at(result);
+            decryptedMsg.append(1, c);
         }
     }
-    cout << decrypted_msg << endl;
+    cout << decryptedMsg << endl;
 }
 
 // Vigenere Encoder
@@ -223,30 +222,30 @@ void viginereEncoder(string message) {
     cout << "Input a key for the message." << endl;
     cin >> key;
 
-    string encrypted_msg = "";
+    string encryptedMsg = "";
     int num;
-    int k_ptr = 0;
+    int kPtr = 0;
     int m = 26;
 
     for (char& c : message) {
         if (isspace(c)) {
-            encrypted_msg += " ";
+            encryptedMsg += " ";
         }
         else {
-            num = letter_map2.at(c);
+            num = letterMap2.at(c);
             // E(x) = (x + k) mod 26
-            num = (letter_map2.at(c) + letter_map2.at(key.at(k_ptr))) % m;
-            c = num_map.at(num);
-            encrypted_msg.append(1, c);
+            num = (letterMap2.at(c) + letterMap2.at(key.at(kPtr))) % m;
+            c = numMap.at(num);
+            encryptedMsg.append(1, c);
             // increment key pointer
-            k_ptr++;
+            kPtr++;
             // if key pointer > indices of key, reset
-            if (k_ptr > key.length() - 1) {
-                k_ptr = 0;
+            if (kPtr > key.length() - 1) {
+                kPtr = 0;
             }
         }
     }
-    cout << encrypted_msg << endl;
+    cout << encryptedMsg << endl;
 }
 
 // Viginere Decoder
@@ -258,30 +257,30 @@ void viginereDecoder(string message) {
     cout << "Input the key for the message." << endl;
     cin >> key;
 
-    string decrypted_msg = "";
+    string decryptedMsg = "";
     int num;
-    int k_ptr = 0;
+    int kPtr = 0;
     int m = 26;
 
     for (char& c : message) {
         if (isspace(c)) {
-            decrypted_msg += " ";
+            decryptedMsg += " ";
         }
         else {
-            num = letter_map2.at(c);
+            num = letterMap2.at(c);
             // D(x) = (x - k) mod 26
-            num = (letter_map2.at(c) - letter_map2.at(key.at(k_ptr))) % m;
+            num = (letterMap2.at(c) - letterMap2.at(key.at(kPtr))) % m;
             num = (num + m) % m;
-            c = num_map.at(num);
-            decrypted_msg.append(1, c);
-            k_ptr++;
+            c = numMap.at(num);
+            decryptedMsg.append(1, c);
+            kPtr++;
          
-            if (k_ptr > key.length() - 1) {
-                k_ptr = 0;
+            if (kPtr > key.length() - 1) {
+                kPtr = 0;
             }
         }
     }
-    cout << decrypted_msg << endl;
+    cout << decryptedMsg << endl;
 }
 
 int subMenu() {

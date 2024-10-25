@@ -84,7 +84,6 @@ cin.ignore(256, '\n');
 - ignores up to 256 characters before newline delimiter
 
 TODO
-- ensure formatting matches c++ guidelines
 - reformat README
 
 FUTURE CHANGES

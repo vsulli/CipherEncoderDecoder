@@ -2,7 +2,7 @@
 
 #include <map>
 
-std::map<char, char> letter_map = {
+std::map<char, char> letterMap = {
         {'a', 'z'},{'b', 'y'},{'c', 'x'},{'d', 'w'},{'e', 'v'},
         {'f', 'u'},{'g', 't'},{'h', 's'},{'i', 'r'},{'j', 'q'},
         {'k', 'p'},{'l', 'o'},{'m', 'n'},{'n', 'm'},{'o', 'l'},
@@ -10,7 +10,7 @@ std::map<char, char> letter_map = {
         {'u', 'f'},{'v', 'e'},{'w', 'd'},{'x', 'c'},{'y', 'b'},
         {'z', 'a'},
 };
-std::map<char, char> letter_map2 = {
+std::map<char, char> letterMap2 = {
         {'a', 0},{'b', 1},{'c', 2},{'d', 3},{'e', 4},
        {'f', 5},{'g', 6},{'h', 7},{'i', 8},{'j', 9},
        {'k', 10},{'l', 11},{'m', 12},{'n', 13},{'o', 14},
@@ -19,7 +19,7 @@ std::map<char, char> letter_map2 = {
        {'z', 25},
 };
 
-std::map<int, char> num_map = {
+std::map<int, char> numMap = {
          {0, 'a'},{1, 'b'},{2, 'c'},{3, 'd'},{4, 'e'},
         {5, 'f'},{6, 'g'},{7, 'h'},{8, 'i'},{9, 'j'},
         {10, 'k'},{11, 'l'},{12, 'm'},{13, 'n'},{14, 'o'},

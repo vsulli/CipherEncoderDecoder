@@ -6,13 +6,13 @@ from 4 cipher types and encode/decode a
 message based on that cipher type.
 */
 
-#include "ciphers.h"
-#include "globals.h"
-
 #include <cmath>
 #include <iostream>
 #include <map>
 #include <string>
+
+#include "ciphers.h"
+#include "globals.h"
 
 using namespace std;
 
