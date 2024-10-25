@@ -5,6 +5,7 @@
 
 #include <algorithm>
 #include <iostream>
+#include <sstream>
 #include <string>
 
 
@@ -17,6 +18,10 @@ string getMessage(string func) {
     // flush input buffer
     cin.ignore();
     getline(cin, message);
+    
+    // strip all numbers
+    message.erase(std::remove_if(message.begin(), message.end(), ::isdigit), message.end());
+
     return message;
 }
 
